@@ -25,7 +25,7 @@ function App() {
   }
 
   function renderPosts(posts) {
-    return posts.map((post) => <p>{post}</p>);
+    return posts.map((post) => <p key={post}>{post}</p>);
   }
 
   function createPost() {
