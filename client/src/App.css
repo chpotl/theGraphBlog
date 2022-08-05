@@ -18,3 +18,8 @@
 .text-area {
   width: 500px;
 }
+
+.posts-block {
+  border: 1px solid green;
+  padding: 10px;
+}

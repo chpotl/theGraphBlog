@@ -1,8 +1,11 @@
 import "./App.css";
 import { ethers } from "ethers";
+import { useState } from "react";
 
 function App() {
   const { ethereum } = window;
+  const [posts, updatePosts] = useState(["post1", "post2"]);
+  const [showPosts, setShowPosts] = useState(false);
 
   async function connect() {
     console.log("connect");
@@ -21,13 +24,8 @@ function App() {
     // }
   }
 
-  function getPosts() {
-    console.log("get posts");
-    // if (address) {
-    //   //
-    // } else {
-    //   //posts.innerHTML = 'connect wallet';
-    // }
+  function renderPosts(posts) {
+    return posts.map((post) => <p>{post}</p>);
   }
 
   function createPost() {
@@ -42,9 +40,12 @@ function App() {
       <button onClick={() => connect()} className="connect-btn">
         Connect to wallet
       </button>
-      <button onClick={() => getPosts()} className="getposts-btn">
+      <button onClick={() => setShowPosts(!showPosts)} className="getposts-btn">
         Get posts
       </button>
+      {showPosts ? (
+        <div className="posts-block">{renderPosts(posts)}</div>
+      ) : null}
       <input className="title-input" placeholder="title" />
       <textarea className="text-area" />
       <button onClick={() => createPost()} className="createpost-btn">
