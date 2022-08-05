@@ -4,8 +4,9 @@ import { useState } from "react";
 
 function App() {
   const { ethereum } = window;
-  const [posts, updatePosts] = useState(["post1", "post2"]);
+  const [posts, updatePosts] = useState([""]);
   const [showPosts, setShowPosts] = useState(false);
+  const [title, setTitle] = useState("");
 
   async function connect() {
     console.log("connect");
@@ -30,6 +31,8 @@ function App() {
 
   function createPost() {
     console.log("create post");
+    updatePosts([...posts, title]);
+
     // const provider = new ethers.providers.Web3Provider(window.ethereum);
     // const signer = provider.getSigner();
     // const contract = new ethers.Contract(contractAddress, Blog.abi, signer);
@@ -45,8 +48,16 @@ function App() {
       </button>
       {showPosts ? (
         <div className="posts-block">{renderPosts(posts)}</div>
-      ) : null}
-      <input className="title-input" placeholder="title" />
+      ) : (
+        <div className="posts-block">you have no posts yet. add smth</div>
+      )}
+      <input
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+        className="title-input"
+        placeholder="title"
+      />
       <textarea className="text-area" />
       <button onClick={() => createPost()} className="createpost-btn">
         Create Post
