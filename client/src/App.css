@@ -1,0 +1,20 @@
+.App {
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin-top: 100px;
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.connect-btn,
+.createpost-btn,
+.getposts-btn,
+.connect-btn,
+.title-input,
+.text-area {
+  width: 500px;
+}
