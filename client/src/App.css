@@ -23,3 +23,8 @@
   border: 1px solid green;
   padding: 10px;
 }
+
+.post-item {
+  border-radius: 10px;
+  border: 2px solid yellow;
+}
